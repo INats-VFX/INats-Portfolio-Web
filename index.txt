@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Santi “INats” | Video Editing Portfolio</title>
+    <style>
+      /* — Reset & Base — */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        color: #222;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #111;
+      }
+      a {
+        color: #0077cc;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* — Navbar — */
+      nav#navbar {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+      nav#navbar ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 10px 0;
+        margin: 0;
+      }
+      nav#navbar li {
+        margin: 0 15px;
+      }
+      nav#navbar a {
+        color: #222;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+      nav#navbar a:hover {
+        color: #ffcc00;
+      }
+
+      /* — Hero Section — */
+      header#hero {
+        position: relative;
+        height: 100vh;
+        background: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+      header#hero .hero-loop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("path/to/your-hero-loop.jpg") center/cover no-repeat;
+        opacity: 0.3;
+      }
+      .hero-loop video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.25;
+        filter: blur(2px);
+        /* autoplay, loop, muted */
+      }
+
+      header#hero .hero-content {
+        position: relative;
+        max-width: 800px;
+        padding: 0 20px;
+      }
+      header#hero h1 {
+        font-size: 2.4rem;
+        margin-bottom: 0.5em;
+        color: #fff;
+      }
+      header#hero .highlight {
+        color: #ffcc00;
+      }
+      header#hero p {
+        font-size: 1.1rem;
+      }
+
+      /* — About Me — */
+      section#about {
+        display: flex;
+        align-items: center;
+        padding: 60px 20px;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      section#about .about-text {
+        flex: 1;
+      }
+      section#about .about-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.6em;
+      }
+      section#about .about-text p {
+        margin-bottom: 1em;
+      }
+      section#about .about-image img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 8px;
+      }
+
+      /* — Featured Work — */
+      section#featured-work {
+        background: #f9f9f9;
+        padding: 60px 20px;
+      }
+      section#featured-work h2 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 1em;
+      }
+      .work-section {
+        margin-bottom: 48px;
+      }
+      .work-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.6em;
+        text-align: center;
+      }
+
+      /* — Video Grid & Items — */
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-bottom: 0.6em;
+      }
+      .video-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        background: #000;
+        aspect-ratio: 16 / 9; /* default horizontal */
+      }
+      .video-item video,
+      .video-item iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      /* — Instagram Preview — */
+      .insta-container {
+        display: grid;
+        /* 3 columnas si cabe, si no, va apilando */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        align-items: start;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 20px 0;
+      }
+      /* fija proporciones para que el video no colapse */
+      .insta-loop {
+        aspect-ratio: 9 / 16;
+      }
+
+      .insta-outro {
+        aspect-ratio: 9 / 16;
+      }
+
+      .insta-container .insta-link,
+      .insta-container .insta-loop,
+      .insta-container .insta-outro {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #000;
+        /* la proporción la controla internamente cada video o imagen */
+      }
+
+      .insta-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .insta-loop video,
+      .insta-outro video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .work-section .description {
+        text-align: center;
+        font-size: 0.95rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* — Footer / Contact — */
+      footer#contact {
+        background: #222;
+        color: #eee;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      footer#contact h2 {
+        text-align: center;
+        margin-bottom: 0.5em;
+        font-size: 1.6rem;
+        color: #eee;
+      }
+      footer#contact p {
+        font-size: 1.1rem;
+        margin-bottom: 1em;
+      }
+      .contact-links a {
+        display: inline-block;
+        margin: 0 10px;
+        color: #ffcc00;
+        font-weight: bold;
+      }
+
+      /* — Responsive — */
+      @media (max-width: 768px) {
+        section#about {
+          flex-direction: column;
+          text-align: center;
+        }
+        section#about .about-image {
+          margin-top: 20px;
+        }
+        .insta-container {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#featured-work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- 1. HERO -->
+    <header id="hero">
+      <div class="hero-loop">
+        <video autoplay loop muted playsinline>
+          <source src="path/to/your-loop.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="hero-content">
+        <h1>
+          Hi, I’m Santi — online, I go by <span class="highlight">INats</span>.
+        </h1>
+        <p>
+          I’m a video editor focused on creating engaging, aesthetic content for
+          social media. I combine rhythm, strategy, and design to help creators
+          and brands connect with their audience.
+        </p>
+      </div>
+    </header>
+
+    <!-- 2. ABOUT ME -->
+    <section id="about">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          <strong>How I started:</strong> I began editing through music
+          visualizers, experimenting with rhythm and atmosphere. That phase
+          sparked my passion for motion and storytelling.
+        </p>
+        <p>
+          <strong>Where I focus today:</strong> Now, I specialize in
+          social-first edits that feel alive — blending design, sound and
+          message for creators and professionals.
+        </p>
+        <p>
+          <strong>What I aim for:</strong> I work with brands and agencies that
+          value originality, clarity and visual impact. Every project helps me
+          evolve and explore new languages of motion.
+        </p>
+      </div>
+      <div class="about-image">
+        <!-- Replace with your photo or animated logo -->
+        <img src="path/to/your-photo.jpg" alt="Santi (INats)" />
+      </div>
+    </section>
+
+    <!-- 3. FEATURED WORK -->
+    <section id="featured-work">
+      <h2>Featured Work</h2>
+
+      <!-- A. Social Media Edits -->
+      <div class="work-section" id="social-media-edits">
+        <h3>Social Media Edits</h3>
+        <div class="video-grid">
+          <!-- Fitness video 1 (vertical TikTok) -->
+          <div class="video-item styled-video" style="aspect-ratio: 9/16">
+            <video
+              controls
+              playsinline
+              poster="Videos/Fitness in Spanish/Main Anuncio-thumb.jpg"
+            >
+              <source
+                src="Videos/Fitness in Spanish/Main Anuncio.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Fitness video 2 (vertical TikTok) -->
+          <div class="video-item styled-video" style="aspect-ratio: 9/16">
+            <video
+              controls
+              playsinline
+              poster="Videos/Fitness in Spanish/Main Anuncio-thumb.jpg"
+            >
+              <source
+                src="Videos/Fitness in Spanish/Main reel 2 final corrected.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Fitness video 3 (vertical TikTok) -->
+          <div class="video-item styled-video" style="aspect-ratio: 9/16">
+            <video
+              controls
+              playsinline
+              poster="Videos/Fitness in Spanish/Main Anuncio-thumb.jpg"
+            >
+              <source
+                src="Videos/Fitness in Spanish/Main Reel 4 - publicar web.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <p class="description">
+          Full edits created for a fitness brand. Includes subtitle animation,
+          icon styling, and visual consistency aligned with the client's palette
+          and logo. Edited fully in Premiere Pro.
+        </p>
+      </div>
+
+      <!-- B. Advanced Edits -->
+      <div class="work-section" id="advanced-edits">
+        <h3>Advanced Edits</h3>
+        <div class="video-grid">
+          <!-- Agency Test Submission (EN) -->
+          <div class="video-item" style="aspect-ratio: 9/16">
+            <video controls playsinline>
+              <source src="Videos/(EN)Agency video pro.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Lawyer Reel Germany #1 -->
+          <div class="video-item" style="aspect-ratio: 9/16">
+            <video controls playsinline>
+              <source
+                src="Videos/Reel germany Muestra completa 1.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Lawyer Reel English #2 -->
+          <div class="video-item" style="aspect-ratio: 9/16">
+            <video controls playsinline>
+              <source
+                src="Videos/Reel English Muestra completa 2.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Lawyer Reel Germany #3 -->
+          <div class="video-item" style="aspect-ratio: 9/16">
+            <video controls playsinline>
+              <source
+                src="Videos/Reel germany Muestra completa 3.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <p class="description">
+          Advanced content editing focused on pacing, messaging and visual flow.
+          Includes a professional agency test submission (EN) and multilingual
+          lawyer reels (DE & EN).
+        </p>
+      </div>
+
+      <!-- C. Motion & Animation -->
+      <div class="work-section" id="motion-design">
+        <h3>Motion & Animation</h3>
+
+        <!-- 1. Course Exercises (16:9) -->
+        <div class="subsection" id="course-animations">
+          <h4>Course Exercises</h4>
+          <div class="video-grid">
+            <!-- Iman Gadzhi Animation style -->
+            <div class="video-item">
+              <video controls playsinline>
+                <source
+                  src="Videos/Course/Iman Gadzhi Animation style .mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <!-- People and money counter -->
+            <div class="video-item">
+              <video controls playsinline>
+                <source
+                  src="Videos/Course/People and money counter.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <!-- Youtube view animation -->
+            <div class="video-item">
+              <video controls playsinline>
+                <source
+                  src="Videos/Course/Youtube view animation.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Personal Animations (9:16) -->
+        <div class="subsection" id="personal-animations">
+          <h4>Personal Animations</h4>
+          <div class="video-grid">
+            <!-- Cuts Cost Less than Animations SFX -->
+            <div class="video-item" style="aspect-ratio: 9/16">
+              <video controls playsinline>
+                <source
+                  src="Videos/Animations/Cuts Cost Less than Animations SFX.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <!-- Listing your property Animation -->
+            <div class="video-item" style="aspect-ratio: 9/16">
+              <video controls playsinline>
+                <source
+                  src="Videos/Animations/Listing your property Animation.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D. Instagram & Extras -->
+      <!-- D. Instagram & Extras -->
+      <div class="work-section" id="instagram-preview">
+        <h3>Instagram Preview</h3>
+        <div class="insta-container">
+          <!-- Perfil IG enlazado -->
+          <div class="insta-link" style="text-align: center">
+            <a href="https://www.instagram.com/creative_inats/" target="_blank">
+              <img
+                src="Img/Instagram ss.png"
+                alt="Instagram @INats"
+                style="
+                  max-width: 100%;
+                  width: 300px;
+                  height: auto;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                "
+              />
+            </a>
+            <p style="margin-top: 8px; font-size: 0.95rem; color: #444">
+              @Creative_INats
+            </p>
+          </div>
+
+          <!-- Loop Animation (9:16) -->
+          <div class="insta-loop">
+            <video autoplay loop muted playsinline>
+              <source
+                src="Videos/Instagram Content Demostration/Dan Koe Loop Animation.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Outro Animation (horizontal) -->
+          <div class="insta-outro">
+            <video autoplay loop muted playsinline>
+              <source
+                src="Videos/Instagram Content Demostration/Outro w SFX.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <p class="description">
+          Quick preview of my Instagram channel: click the image to visit my
+          profile, watch the loop animation, and view the branded outro with
+          sound design.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. FOOTER / CONTACT -->
+    <footer id="contact">
+      <h2>Contact</h2>
+      <p>
+        Let’s work together — I’m open to creative collaborations worldwide.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:professionalredscontact@gmail.com">Email</a>
+        <a href="https://www.instagram.com/creative_inats/" target="_blank"
+          >Instagram</a
+        >
+        <a href="https://www.behance.net/inats" target="_blank">Behance</a>
+        <a
+          href="https://www.linkedin.com/in/santiago-benegas-620a44235/"
+          target="_blank"
+          >LinkedIn</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
