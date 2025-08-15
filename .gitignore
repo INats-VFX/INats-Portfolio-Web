@@ -9,3 +9,9 @@ dist/
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+
+# Ignorar videos y datos pesados
+/Videos/
+/Data/
+/*.mp4
+
