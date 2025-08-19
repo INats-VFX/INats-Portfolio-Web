@@ -7,6 +7,20 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Video.js core -->
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+
+    <!-- Plugin YouTube -->
+    <script src="https://cdn.jsdelivr.net/npm/videojs-youtube@2.6.1/dist/Youtube.min.js"></script>
 
     <title>Santi “INats” | Video Editing Portfolio</title>
     <style>
@@ -842,6 +856,54 @@
       #course-animations {
         padding: 60px;
       }
+      .video-js {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .vjs-big-play-button {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+      }
+      /* Cajita flotante base */
+      .floating-hint {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(255, 111, 0, 0.75); /* naranja con opacidad */
+        color: #fff; /* texto blanco */
+        padding: 10px 14px;
+        font-size: 13px;
+        border-radius: 8px;
+        font-family: "Inter", sans-serif;
+        max-width: 240px;
+        line-height: 1.4;
+        z-index: 999;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+        pointer-events: none;
+      }
+
+      /* Estado visible */
+      .floating-hint.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Ícono Font Awesome */
+      .hint-icon {
+        margin-right: 6px;
+        font-size: 14px;
+        vertical-align: middle;
+        color: #000; /* ícono negro */
+      }
+
       @media (max-width: 768px) {
         /* apilar verticalmente y centrar */
         #personal-animations {
@@ -916,6 +978,45 @@
         #course-animations {
           padding: 0px;
         }
+        .floating-hint {
+          bottom: 12px;
+          right: 12px;
+          font-size: 12px;
+          padding: 8px 10px;
+          max-width: 200px;
+        }
+      }
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-bottom: 177.77%; /* Aspect ratio 9:16 */
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        margin-bottom: 24px;
+      }
+
+      .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .video-16-9 {
+        position: relative;
+        width: 100%;
+        max-width: 720px;
+        aspect-ratio: 16 / 9;
+        margin: 0 auto;
+      }
+
+      .video-16-9 iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
       }
     </style>
   </head>
@@ -944,7 +1045,6 @@
           playsinline
         >
           <source src="/Videos/Animations/INats  loop.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
 
         <!-- Video para móvil -->
@@ -1024,18 +1124,15 @@
             class="video-item small-vertical styled-video"
             style="aspect-ratio: 9/16"
           >
-            <video
-              controls
-              playsinline
-              loading="lazy"
-              poster="Videos/Fitness in Spanish/Main Anuncio-thumb.jpg"
-            >
-              <source
-                src="Videos/Fitness in Spanish/Main Anuncio.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/t-9HgTj0oRs?rel=0&modestbranding=1"
+                title="Video de fitness"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
 
           <!-- Fitness video 2 (vertical TikTok) -->
@@ -1043,18 +1140,15 @@
             class="video-item small-vertical styled-video"
             style="aspect-ratio: 9/16"
           >
-            <video
-              controls
-              playsinline
-              loading="lazy"
-              poster="Videos/Fitness in Spanish/Main miniatura 2.jpg"
-            >
-              <source
-                src="Videos/Fitness in Spanish/Main reel 2 final corrected.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/YYRV_zeYGtk?rel=0&modestbranding=1"
+                title="Video de fitness"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
 
           <!-- Fitness video 3 (vertical TikTok) -->
@@ -1062,18 +1156,16 @@
             class="video-item small-vertical styled-video"
             style="aspect-ratio: 9/16"
           >
-            <video
-              controls
-              playsinline
-              loading="lazy"
-              poster="Videos/Fitness in Spanish/Main Back.jpg"
-            >
-              <source
-                src="Videos/Fitness in Spanish/Main Reel 4 - publicar web.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            <!-- Tercer video: Movimiento controlado -->
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/acqY2mWtsdc?rel=0&modestbranding=1"
+                title="Movimiento controlado"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         </div>
         <p class="description">
@@ -1090,46 +1182,58 @@
           <div class="video-grid">
             <!-- Agency Test Submission (EN) -->
             <div class="video-item" style="aspect-ratio: 9/16">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/(EN)Agency video pro.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <!-- Advanced Edit: Agencia -->
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/zvYzLBrmeKg?rel=0&modestbranding=1"
+                  title="Advanced Edit - Agencia"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
 
             <!-- Lawyer Reel Germany #1 -->
             <div class="video-item" style="aspect-ratio: 9/16">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Reel germany Muestra completa 1.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <!-- Advanced Edit: Segundo video -->
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/ZMTSFV9dUos?rel=0&modestbranding=1"
+                  title="Advanced Edit - Lawyer Reel Germany #1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
 
             <!-- Lawyer Reel English #2 -->
             <div class="video-item" style="aspect-ratio: 9/16">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Reel English Muestra completa 2.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <!-- Advanced Edit: Abogado Español en inglés -->
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/28jcsbwxCjk?rel=0&modestbranding=1"
+                  title="Advanced Edit - Spanish Lawyer (English)"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
 
             <!-- Lawyer Reel Germany #3 -->
             <div class="video-item" style="aspect-ratio: 9/16">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Reel germany Muestra completa 3.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <!-- Advanced Edit: Cuarta entrega -->
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/6RggzbwY1M8?rel=0&modestbranding=1"
+                  title="Advanced Edit - Cuarta entrega"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
           </div>
           <p class="description">
@@ -1150,60 +1254,66 @@
           <div class="video-grid">
             <!-- Iman Gadzhi Animation style -->
             <div class="video-item small-vertical">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Course/Iman Gadzhi Animation style .mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <!-- Course Animation: Introductorio -->
+              <div class="video-16-9">
+                <iframe
+                  src="https://www.youtube.com/embed/ShhDefMeyf4?rel=0&modestbranding=1"
+                  title="Course Animation - Introductorio"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
             <!-- People and money counter -->
             <div class="video-item small-vertical">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Course/People and money counter.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-16-9">
+                <iframe
+                  src="https://www.youtube.com/embed/xFypndAFU2g?rel=0&modestbranding=1"
+                  title="Course Animation - Avanzado"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
             <!-- Youtube view animation -->
-            <div class="video-item">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Course/Youtube view animation.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+            <div class="video-item small-vertical">
+              <div class="video-16-9">
+                <iframe
+                  src="https://www.youtube.com/embed/C16mHAAhXSk?rel=0&modestbranding=1"
+                  title="Course Animation - Final"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 2. Personal Animations (9:16) -->
         <div class="subsection" id="personal-animations">
-          <h4>Personal Animations</h4>
+          <h4>Client-Based Motion Pieces</h4>
           <div class="video-grid">
             <!-- Cuts Cost Less than Animations SFX -->
             <div class="video-item" style="aspect-ratio: 9/16">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Animations/Cuts Cost Less than Animations SFX.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/PLDmWKunX7g?rel=0&modestbranding=1"
+                  title="Personal Animation - Experimental"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
             <!-- Listing your property Animation -->
             <div class="video-item" style="aspect-ratio: 9/16">
-              <video loading="lazy" controls playsinline>
-                <source
-                  src="Videos/Animations/Listing your property Animation.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/ks0fiWyBGBA?rel=0&modestbranding=1"
+                  title="Personal Animation - Abstract Flow"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -1297,5 +1407,21 @@
         >
       </div>
     </footer>
+    <div class="floating-hint" id="floatingHint">
+      <i class="fas fa-video hint-icon"></i>
+      If video quality looks low, click the title to watch in HD on YouTube.
+    </div>
+
+    <script>
+      window.addEventListener("scroll", () => {
+        const heroHeight = window.innerHeight;
+        const hint = document.getElementById("floatingHint");
+        if (window.scrollY > heroHeight) {
+          hint.classList.add("visible");
+        } else {
+          hint.classList.remove("visible");
+        }
+      });
+    </script>
   </body>
 </html>
