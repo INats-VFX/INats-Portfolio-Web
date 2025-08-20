@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- SEO & Social Sharing -->
+    <meta
+      name="description"
+      content="INats is a video editor and motion designer focused on aesthetic, strategic content for creators and brands."
+    />
+    <meta
+      name="keywords"
+      content="video editing, motion graphics, social media content, INats, portfolio, visual design, freelance editor"
+    />
+    <meta name="author" content="Santi Benegas" />
+
+    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="INats | Video Editing Portfolio" />
+    <meta
+      property="og:description"
+      content="A curated selection of motion pieces, social-first edits and visual experiments by Santi (INats)."
+    />
+    <meta property="og:url" content="https://inatsportfolio.online" />
+    <meta property="og:type" content="website" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -1019,6 +1038,22 @@
         border: none;
       }
     </style>
+    <script>
+      if (location.protocol !== "https:") {
+        location.replace(
+          `https://${location.hostname}${location.pathname}${location.search}`
+        );
+      }
+    </script>
+    <script>
+      if (location.hostname.startsWith("www.")) {
+        location.replace(
+          `https://${location.hostname.replace("www.", "")}${
+            location.pathname
+          }${location.search}`
+        );
+      }
+    </script>
   </head>
   <body>
     <!-- NAVBAR -->
