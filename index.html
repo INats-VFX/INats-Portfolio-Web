@@ -998,20 +998,31 @@
           padding: 0px;
         }
         .floating-hint {
-          bottom: 12px;
-          right: 12px;
-          font-size: 12px;
-          padding: 8px 10px;
-          max-width: 200px;
+          position: sticky;
+          top: 0;
+          right: 0;
+          left: 0;
+          width: 100%;
+          margin: 0;
+          border-radius: 0;
+          background-color: rgba(255, 111, 0, 0.85);
+          color: #fff;
+          padding: 6px 12px;
+          font-size: 13px;
+          font-weight: bold;
+          text-align: center;
+          z-index: 9;
+          transform: translateY(-10px);
+          transition: all 0.6s ease;
+        }
+        .floating-hint.visible {
+          transform: translateY(0);
         }
         .contact-links a.cta-button {
           display: block;
           margin: 12px auto;
           width: 80%;
           text-align: center;
-        }
-        .floating-hint {
-          bottom: 100px; /* sube la caja para no interferir con botones */
         }
       }
       .video-wrapper {
