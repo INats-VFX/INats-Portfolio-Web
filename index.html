@@ -1461,7 +1461,13 @@
       window.addEventListener("scroll", () => {
         const heroHeight = window.innerHeight;
         const hint = document.getElementById("floatingHint");
-        if (window.scrollY > heroHeight) {
+        const instagramSection = document.getElementById("instagram-showcase");
+        const instagramTop = instagramSection.getBoundingClientRect().top;
+
+        const hasScrolledPastHero = window.scrollY > heroHeight;
+        const isAboveInstagram = instagramTop > window.innerHeight * 0.3;
+
+        if (hasScrolledPastHero && isAboveInstagram) {
           hint.classList.add("visible");
         } else {
           hint.classList.remove("visible");
